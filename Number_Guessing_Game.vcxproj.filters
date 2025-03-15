@@ -24,12 +24,18 @@
     <ClCompile Include="get_stuff.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="guess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="greeting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="get_stuff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="guess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

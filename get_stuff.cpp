@@ -19,18 +19,26 @@ bool clearFailedExtration() {
 	return false;
 }
 
+bool hasUnextractedInput() {
+	if (!std::cin.eof() && std::cin.peek() != '\n') {
+		std::cin.clear();
+		ignoreLine();
+		return true;
+	}
+	return false;
+}
+
 
 int getInt() {
 
 	while (true) {
-		std::cout << "Enter an integer: ";
 		int x{};
 		std::cin >> x;
 
-		/* 
-		I also want to check if the user entered a float, and ask them to
-		enter an integer instead...
-		*/
+		if (hasUnextractedInput()) {
+			std::cout << "Invalid input, try again.\n";
+			continue;
+		}
 
 		if (clearFailedExtration()) {
 			std::cout << "Invalid input, try again\n";
@@ -40,5 +48,30 @@ int getInt() {
 		ignoreLine();
 
 		return x;
+	}
+}
+
+char getAnswer() {
+	
+	char answer{};
+	std::cin >> answer;
+	while (true) {
+		switch (answer)
+		{
+		case 'y':
+			ignoreLine();
+			return 'y';
+		case 'h':
+			ignoreLine();
+			return 'h';
+		case 'l':
+			ignoreLine();
+			return 'l';
+		default:
+			std::cout << "You must enter 'y' for yes, 'h' for higer or 'l' for lower: ";
+			std::cin >> answer;
+			continue;
+		}
+
 	}
 }

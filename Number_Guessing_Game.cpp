@@ -1,16 +1,24 @@
 #include <iostream>
+#include <tuple>
 #include "greeting.h"
 #include "get_stuff.h"
+#include "guess.h"
 
 int main()
 {
 	greeting();
-	int x{ getInt() };
+	while (true) {
+		std::cout << "Enter an integer between 0 and 1000: ";
+		int x{ getInt() };
 
+		if (x > 0 && x < 1001) {
+			break;
+		}
+	}
 
-	// step 1: get an integer
-	// step 2: try to guess it and keep track of guesses
-	// step 2.1: after the above works, implement a binary search to do the guessing
+	auto [answer, numOfGuess] = guess();
+	
+	std::cout << "\nYour number is: " << answer << ". It took the machine: " << numOfGuess << " tries.\n";
 
 	return 0;
 }
